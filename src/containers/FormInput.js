@@ -7,7 +7,7 @@ const FormInputWrapper = styled.div`
 const FormInput = () => {
     return (
         <FormInputWrapper>
-            <div><input type="text" name="searchInput" /></div>
+            <div><input type="text" defaultValue="Search..." name="searchInput" /></div>
             <div><input type="checkbox" name="onlyInStock" /> Only show products in stock</div>
         </FormInputWrapper>
     )

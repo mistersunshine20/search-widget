@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 
 const SectionTitleWrapper = styled.div`
 font-weight: bold;
+padding: 2px 5px;
 `
 
 const SectionTitle = ({title, width}) => {

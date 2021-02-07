@@ -2,46 +2,33 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from "prop-types"
 
-const ListWrapper = styled.div`
-display: flex;
-flex-direction: row;
-`
-
-const OutOfStockWrapper = styled.div`
+const OutOfStockWrapper = styled.td`
 color: red;
-padding: 5px;
-overflow-wrap: normal;
-border: 1px solid black;
+padding: 2px 5px;
 `
 
-const ItemWrapper = styled.div`
-padding: 5px;
-overflow-wrap: normal;
-border: 1px solid black;
+const ItemWrapper = styled.td`
+padding: 2px 5px;
 `
 
-const ItemList = ({oos, name, price, width}) => {
+const ItemList = ({oos, name, price}) => {
     let content;
     if (oos) {
         content = (
-            <>
-                <OutOfStockWrapper style={{maxWidth: width + "px"}}>{name}</OutOfStockWrapper>
-                <OutOfStockWrapper style={{maxWidth: width + "px"}}>{price}</OutOfStockWrapper>
-            </>
+            <tr>
+                <OutOfStockWrapper>{name}</OutOfStockWrapper>
+                <ItemWrapper>{price}</ItemWrapper>
+            </tr>
         )
     } else {
         content = (
-            <>
-                <ItemWrapper style={{maxWidth: width + "px"}}>{name}</ItemWrapper>
-                <ItemWrapper style={{maxWidth: width + "px"}}>{price}</ItemWrapper>
-            </>
+            <tr>
+                <ItemWrapper>{name}</ItemWrapper>
+                <ItemWrapper>{price}</ItemWrapper>
+            </tr>
         )
     }
-    return (
-        <ListWrapper>
-            {content}
-        </ListWrapper>
-    )
+    return content
 }
 
 ItemList.propTypes = {
