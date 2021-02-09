@@ -14,5 +14,8 @@ module.exports = {
     "plugins": [
         "react"
     ],
-    "extends": ["eslint:recommended", "plugin:react/recommended"]
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "rules": {
+        "no-unused-vars": "warn"
+    }
 };
