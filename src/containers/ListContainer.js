@@ -2,21 +2,35 @@ import React from 'react'
 //import styled from 'styled-components'
 import ItemList from "./../components/ItemList/ItemList"
 import SectionTitle from "./../components/SectionTitle/SectionTitle"
+import PropTypes from "prop-types"
 
-const ListContainer = () => {
+const ListContainer = ({data}) => {
+    let content = []
+    let currentTitle = null
+    let i = 1
+    data.map((datum) => {
+        if (datum.category !== currentTitle) {
+            currentTitle = datum.category
+            content.push(<SectionTitle key={i++} title={datum.category}/>)
+        }
+        content.push(<ItemList key={i++} {...datum} />)
+    })
+
     return (
         <table>
+            <tbody>
             <tr>
                 <td style={{padding: "2px 5px", fontWeight: "bold"}}>Name</td>
                 <td style={{padding: "2px 5px", fontWeight: "bold"}}>Price</td>
             </tr>
-            <SectionTitle title="department 1"/>
-            <ItemList oos={true} name="OOS name 1" price="OOS price 1" />
-            <SectionTitle title="department 2"/>
-            <ItemList oos={false} name="name 2" price="price 2" />
-            <ItemList oos={false} name="name 3" price="price 3" />
+            {content}
+            </tbody>
         </table>
     )
+}
+
+ListContainer.propTypes = {
+    data: PropTypes.array
 }
 
 export default ListContainer

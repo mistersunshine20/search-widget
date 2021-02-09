@@ -11,9 +11,9 @@ const ItemWrapper = styled.td`
 padding: 2px 5px;
 `
 
-const ItemList = ({oos, name, price}) => {
+const ItemList = ({stocked, name, price}) => {
     let content;
-    if (oos) {
+    if (!stocked) {
         content = (
             <tr>
                 <OutOfStockWrapper>{name}</OutOfStockWrapper>
@@ -32,7 +32,7 @@ const ItemList = ({oos, name, price}) => {
 }
 
 ItemList.propTypes = {
-    oos: PropTypes.bool,
+    stocked: PropTypes.bool,
     name: PropTypes.string,
     price: PropTypes.string,
     width: PropTypes.number
